@@ -26,7 +26,7 @@ def validate_CLI_args(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--language', type=str, help='Language of input text. Currently supported options:'
-                                                     'english (default).', required=False, default='EN.')
+                                                     'english (default).', required=False, default='english')
     parser.add_argument('--n_suggestions', type=int, help='Maximum number of corrections to suggest.', default=10)
     CLI_args = parser.parse_args()
     try:
