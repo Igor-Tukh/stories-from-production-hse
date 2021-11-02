@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.itukh.spellchecker'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.apache.opennlp:opennlp:1.9.1'
+    implementation 'org.apache.opennlp:opennlp-tools:1.9.3'
+    implementation 'org.languagetool:languagetool-core:2.2'
+    implementation 'org.languagetool:language-en:5.5'
+}

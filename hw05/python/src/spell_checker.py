@@ -28,8 +28,8 @@ class SpellChecker:
             candidates = self._collect_candidates(word)
             print('Possible corrections (from the most probable to the least probable):' if len(candidates) > 0 else
                   'No corrections found.')
-            candidates = candidates[:min(len(candidates), self.n_suggestions)]
             candidates = self._rank_candidates(word, candidates)
+            candidates = candidates[:min(len(candidates), self.n_suggestions)]
             print(os.linesep.join(candidates))
 
     def _collect_candidates(self, word):
