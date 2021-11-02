@@ -15,4 +15,6 @@ dependencies {
     implementation 'org.apache.opennlp:opennlp-tools:1.9.3'
     implementation 'org.languagetool:languagetool-core:2.2'
     implementation 'org.languagetool:language-en:5.5'
+    implementation 'info.debatty:java-string-similarity:1.0.1'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
 }

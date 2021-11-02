@@ -1,5 +1,7 @@
 package ru.itukh.spellchecker;
 
+import org.apache.commons.codec.EncoderException;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -16,7 +18,7 @@ public class Main {
             }
             try {
                 checker.check(text);
-            } catch (IOException e) {
+            } catch (IOException | EncoderException e) {
                 System.out.println("Error occurred during spell checking: " + e.getMessage() + ".");
                 System.exit(1);
             }
