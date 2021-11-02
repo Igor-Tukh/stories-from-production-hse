@@ -1,5 +1,6 @@
 import nltk
 import os
+import string
 
 from hunspell import Hunspell
 from nltk.tokenize import word_tokenize
@@ -22,7 +23,7 @@ class SpellChecker:
     def __call__(self, text):
         words = word_tokenize(text, self.language)
         for word in words:
-            if self.hunspell.spell(word):
+            if self.hunspell.spell(word) or word in string.punctuation:
                 continue
             print(f'Unknown word: \'{word}\'.', end=' ')
             candidates = self._collect_candidates(word)

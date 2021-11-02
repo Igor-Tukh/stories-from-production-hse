@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpellChecker {
-    public static void check(String text) throws IOException {
-        SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
+    private final SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
+    private final JLanguageTool langTool = new JLanguageTool(new AmericanEnglish());
+
+    public void check(String text) throws IOException {
         String[] tokens = tokenizer.tokenize(text);
-        JLanguageTool langTool = new JLanguageTool(new AmericanEnglish());
         for (String token : tokens) {
             List<RuleMatch> matches = langTool.check(token);
             List<String> replacements = new ArrayList<>();
@@ -24,7 +25,7 @@ public class SpellChecker {
                 continue;
             }
             System.out.println("Unknown word: " + token + ". Possible corrections:");
-            for (String replacement: replacements) {
+            for (String replacement: CandidatesRanker.rank(token, replacements)) {
                 System.out.println("- " + replacement);
             }
         }

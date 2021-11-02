@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        SpellChecker checker = new SpellChecker();
         System.out.println("Type text to apply the spell checker or type 'exit' to exit.");
         while(true) {
             System.out.print("> ");
@@ -14,7 +15,7 @@ public class Main {
                 break;
             }
             try {
-                SpellChecker.check(text);
+                checker.check(text);
             } catch (IOException e) {
                 System.out.println("Error occurred during spell checking: " + e.getMessage() + ".");
                 System.exit(1);
